@@ -14,9 +14,17 @@ class CustomerResource extends JsonResource
      */
     public function toArray($request)
     {
-        // choose that data returned
+        // choose that data returned in api/customers/1234
         return [
-            'id' => $this->id
+            'id' => $this->id,
+            'name' => $this->name,
+            'type' => $this->type,
+            'email' => $this->email,
+            'address' => $this->address,
+            'city' => $this->city,
+            'state' => $this->state,
+            'postalCode' => $this->postal_code,
+            // times are not sent
         ];
     }
 }

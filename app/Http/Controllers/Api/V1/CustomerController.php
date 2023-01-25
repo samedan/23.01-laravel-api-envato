@@ -7,17 +7,19 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Resources\V1\CustomerResource;
 use App\Http\Requests\UpdateCustomerRequest;
+use App\Http\Resources\V1\CustomerCollection;
 
 class CustomerController extends Controller
 {
-    /**
+    /** // /api/customers
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return Customer::all();
+        // /api/customers returns Transformed JSON Customer made in CustomerResource
+        return new CustomerCollection(Customer::all());
     }
 
     /**
@@ -41,7 +43,7 @@ class CustomerController extends Controller
         //
     }
 
-    /**
+    /** // /api/customers/1234
      * Display the specified resource.
      *
      * @param  \App\Models\Customer  $customer
