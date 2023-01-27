@@ -22,17 +22,19 @@ class CustomerController extends Controller
     {
         // FILTER - search
         $filter = new CustomersFilter();
-        $queryItems= $filter->transform($request); //[['column', 'operator', 'value']]
-        if(count($queryItems)==0) {
-            // /api/customers returns Transformed JSON Customer made in CustomerResource
-             return new CustomerCollection(Customer::paginate());
-        } else {
-            // insert filter []
-            $customers = Customer::where($queryItems)->paginate();
-            // insert the queries into the 'next' paginated links
-            // /api/v1/customers? status[ne]=P & page=3
-            return new CustomerCollection($customers->appends($request->query()));
-        } 
+        $filterItems= $filter->transform($request); //[['column', 'operator', 'value']]
+
+        // &includeInvoices=true
+        $includeInvoices = $request->query('includeInvoices');
+
+        $customers = Customer::where($filterItems);
+        
+
+        if($includeInvoices) {
+            $customers = $customers->with('invoices');
+        }
+
+        return new CustomerCollection($customers->paginate()->appends($request->query()));
 
         
     }
@@ -66,6 +68,12 @@ class CustomerController extends Controller
      */
     public function show(Customer $customer)
     {
+        // &includeInvoices=true
+        $includeInvoices = request()->query('includeInvoices');
+        if($includeInvoices) {
+            // &includeInvoices=true
+            return new CustomerResource($customer->loadMissing('invoices'));    
+        }
         // /api/customers/1234
         return new CustomerResource($customer);
     }
