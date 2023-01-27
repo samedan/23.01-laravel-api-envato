@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
-use App\Services\V1\CustomerQuery;
+use App\Filters\V1\CustomersFilter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Resources\V1\CustomerResource;
@@ -21,14 +21,17 @@ class CustomerController extends Controller
     public function index(Request $request)
     {
         // FILTER - search
-        $filter = new CustomerQuery();
+        $filter = new CustomersFilter();
         $queryItems= $filter->transform($request); //[['column', 'operator', 'value']]
         if(count($queryItems)==0) {
             // /api/customers returns Transformed JSON Customer made in CustomerResource
              return new CustomerCollection(Customer::paginate());
         } else {
             // insert filter []
-            return new CustomerCollection(Customer::where($queryItems)->paginate());
+            $customers = Customer::where($queryItems)->paginate();
+            // insert the queries into the 'next' paginated links
+            // /api/v1/customers? status[ne]=P & page=3
+            return new CustomerCollection($customers->appends($request->query()));
         } 
 
         
