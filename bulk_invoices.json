@@ -1,0 +1,82 @@
+[
+    {
+        
+        "customerId": 1,
+        "amount": 14336,
+        "status": "P",
+        "billedDate": "2020-08-27 10:08:30",
+        "paidDate": "2022-04-13 17:48:44"
+    },
+    {
+        
+        "customerId": 1,
+        "amount": 9124,
+        "status": "V",
+        "billedDate": "2018-09-15 22:01:35",
+        "paidDate": null
+    },
+    {
+        
+        "customerId": 1,
+        "amount": 14216,
+        "status": "B",
+        "billedDate": "2020-11-26 11:33:21",
+        "paidDate": null
+    },
+    {
+        
+        "customerId": 1,
+        "amount": 12713,
+        "status": "V",
+        "billedDate": "2017-07-12 01:05:19",
+        "paidDate": null
+    },
+    {
+        
+        "customerId": 1,
+        "amount": 12849,
+        "status": "V",
+        "billedDate": "2022-02-20 23:35:18",
+        "paidDate": null
+    },
+    {
+        
+        "customerId": 1,
+        "amount": 583,
+        "status": "P",
+        "billedDate": "2015-10-29 15:28:10",
+        "paidDate": "2021-02-26 06:51:54"
+    },
+    {
+        
+        "customerId": 1,
+        "amount": 18455,
+        "status": "P",
+        "billedDate": "2022-11-02 15:06:26",
+        "paidDate": "2021-10-10 23:01:36"
+    },
+    {
+        
+        "customerId": 1,
+        "amount": 12608,
+        "status": "P",
+        "billedDate": "2014-10-05 19:40:32",
+        "paidDate": "2015-10-10 14:33:21"
+    },
+    {
+        
+        "customerId": 1,
+        "amount": 5641,
+        "status": "B",
+        "billedDate": "2016-01-30 05:56:44",
+        "paidDate": null
+    },
+    {
+        
+        "customerId": 1,
+        "amount": 17051,
+        "status": "P",
+        "billedDate": "2022-12-07 04:49:10",
+        "paidDate": "2013-06-09 03:37:33"
+    }
+]
