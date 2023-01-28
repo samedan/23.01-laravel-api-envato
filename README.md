@@ -9,12 +9,19 @@ https://github.com/samedan/23.01-laravel-api-envato
 
 ## Install from Git repo
 > git clone xxx
+
 > composer install --no-scripts
+
 > .env
+
 > php artisan config:cache
+
 > php artisan migrate
+
 > php artisan migrate:fresh --seed
+
 http://127.0.0.1:8000/api/v1/customers
+
 http://127.0.0.1:8000/api/v1/customers/9?includeInvoices=true
 
 ## Install Laravel
