@@ -30,7 +30,7 @@ Route::get('/setup', function() {
 
         $user->name = 'Admin';
         $user->email = $credentials['email'];
-        $user->password = Hash::make($credentials['Admin']);
+        $user->password = Hash::make($credentials['password']);
 
         $user ->save();
 
@@ -38,7 +38,15 @@ Route::get('/setup', function() {
             $user = Auth::user();
 
             $adminToken = $user->createToken('admin-token', ['create', 'update', 'delete']);
-            
+            $updateToken = $user->createToken('update-token', ['create', 'update']);
+            $basicToken = $user->createToken('basic-token');
+
+            return [
+                'admin'=> $adminToken->plainTextToken,
+                'update'=> $updateToken->plainTextToken,
+                'basic'=> $basicToken->plainTextToken,
+            ];
+
         }
     }
 });
